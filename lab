@@ -1,0 +1,14 @@
+(defn splitseq [pred seq]
+  (let [satisfying (filter pred seq)
+        unsatisfying (remove pred seq)]
+    [satisfying unsatisfying]))
+
+
+(def numbers (range -10 10))
+
+
+(defn is-positive? [x] (pos? x))
+
+(let [[positive-nums not-positive-nums] (splitseq is-positive? numbers)]
+  (println "Positive nums:" positive-nums)
+  (println "Not positive nums:" not-positive-nums))
